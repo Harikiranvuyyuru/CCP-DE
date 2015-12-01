@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import avro.schema
 from avro.datafile import DataFileReader, DataFileWriter
 from avro.io import DatumReader, DatumWriter
