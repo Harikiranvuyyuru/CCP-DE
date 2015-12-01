@@ -13,4 +13,11 @@
  	      {"name": "favorite_number",  "type": ["int", "null"]},
 	      {"name": "favorite_color", "type": ["string", "null"]}
 	  ]
-	}```
+	}
+```
+
+#### Compiling Java code from schema
+
+```sh
+  java -jar avro-tools-1.7.7.jar compile schema user.avsc .
+```
