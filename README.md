@@ -1,3 +1,3 @@
 # CCP-DE
-## CCP : Data Engineer Exam Preparation
+## CCP : Data Engineer Exam Exercises
 
