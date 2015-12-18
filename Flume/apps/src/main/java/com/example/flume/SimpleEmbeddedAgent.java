@@ -1,3 +1,5 @@
+package com.example.flume;
+
 import org.apache.flume.agent.embedded.EmbeddedAgent;
 import org.apache.flume.Event;
 import org.apache.flume.event.EventBuilder;

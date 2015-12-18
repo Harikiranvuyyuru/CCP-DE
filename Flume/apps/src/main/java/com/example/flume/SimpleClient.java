@@ -1,4 +1,4 @@
-package com.cloudwick.flume;
+package com.example.flume;
 
 import org.apache.flume.Event;
 import org.apache.flume.EventDeliveryException;
