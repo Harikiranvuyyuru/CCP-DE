@@ -54,7 +54,8 @@ Exec source runs a given Unix command on start-up and expects that process to co
 
 #### Batch Size
 	- When configured by client code using the flume-core-sdk , to send events to flume avro source.
-		The flume client sdk has an appendBatch method. This will take a list of events and send them to the source as a batch. This is the size of the number of events to be passed to the source at one time.
+		The flume client sdk has an appendBatch method. This will take a list of events and send them to the source as a batch. 
+		This is the size of the number of events to be passed to the source at one time.
 	- When set as a parameter on HDFS sink (or other sinks which support BatchSize parameter)
 		This is the number of events written to file before it is flushed to HDFS
 #### Channel Capacity
