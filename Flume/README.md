@@ -173,6 +173,65 @@ Stores events on the local filesystem.
 Experimental sink that writes events to a Kite Dataset. This sink will deserialize the body of each incoming event and store the resulting record in a Kite Dataset. It determines target Dataset by loading a dataset by URI.
 The only supported serialization is avro, and the record schema must be passed in the event headers, using either flume.avro.schema.literal with the JSON schema representation or flume.avro.schema.url with a URL where the schema may be found ( hdfs:/... URIs are supported). This is compatible with the Log4jAppender flume client and the spooling directory source’s Avro deserializer using deserializer.schemaType = LITERAL.
 
+
+###Channels
+
+####Memory Channel
+The events are stored in an in-memory queue with configurable max size. It’s ideal for flows that need higher throughput and are prepared to lose the staged data in the event of a agent failures.
+
+```
+	a1.channels = c1
+	a1.channels.c1.type = memory
+	a1.channels.c1.capacity = 10000
+	a1.channels.c1.transactionCapacity = 10000
+	a1.channels.c1.byteCapacityBufferPercentage = 20
+	a1.channels.c1.byteCapacity = 800000
+```
+
+####Spillable Memory Channel
+The events are stored in an in-memory queue and on disk. The in-memory queue serves as the primary store and the disk as overflow. The disk store is managed using an embedded File channel. When the in-memory queue is full, additional incoming events are stored in the file channel. This channel is ideal for flows that need high throughput of memory channel during normal operation, but at the same time need the larger capacity of the file channel for better
+tolerance of intermittent sink side outages or drop in drain rates. The throughput will reduce approximately to file channel speeds during such abnormal situations. In case of an agent crash or restart, only the events stored on disk are recovered when the agent comes online. 'This channel is currently experimental and not recommended for use in production.'
+
+```
+	a1.channels = c1
+	a1.channels.c1.type = SPILLABLEMEMORY
+	a1.channels.c1.memoryCapacity = 10000
+	a1.channels.c1.overflowCapacity = 1000000
+	a1.channels.c1.byteCapacity = 800000
+	a1.channels.c1.checkpointDir = /mnt/flume/checkpoint
+	a1.channels.c1.dataDirs = /mnt/flume/data
+```
+
+To disable the use of the in-memory queue and function like a file channel:
+
+```
+	a1.channels = c1
+	a1.channels.c1.type = SPILLABLEMEMORY
+	a1.channels.c1.memoryCapacity = 0
+	a1.channels.c1.overflowCapacity = 1000000
+	a1.channels.c1.checkpointDir = /mnt/flume/checkpoint
+	a1.channels.c1.dataDirs = /mnt/flume/data
+```
+
+To disable the use of overflow disk and function purely as a in-memory channel:
+
+```
+	a1.channels = c1
+	a1.channels.c1.type = SPILLABLEMEMORY
+	a1.channels.c1.memoryCapacity = 100000
+	a1.channels.c1.overflowCapacity = 0
+```
+
+####File Channel
+
+```
+	a1.channels = c1
+	a1.channels.c1.type = file
+	a1.channels.c1.checkpointDir = /mnt/flume/checkpoint
+	a1.channels.c1.dataDirs = /mnt/flume/data
+```
+
+
 ###Standalone Flume tuning
 
 #### Batch Size
