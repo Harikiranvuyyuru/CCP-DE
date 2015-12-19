@@ -40,6 +40,7 @@ Exec source runs a given Unix command on start-up and expects that process to co
 This source lets you ingest data by placing files to be ingested into a “spooling” directory on disk. This source will watch the specified directory for new files, and will parse events out of new files as they appear. The event parsing logic is pluggable. After a given file has been fully read into the channel, it isrenamed to indicate completion (or optionally deleted).
 
 Unlike the Exec source, this source is reliable and will not miss data, even if Flume is restarted or killed. In exchange for this reliability, only immutable,uniquely-named files must be dropped into the spooling directory. Flume tries to detect these problem conditions and will fail loudly if they are violated:
+
 	1. If a file is written to after being placed into the spooling directory, Flume will print an error to its log file and stop processing.
 	2. If a file name is reused at a later time, Flume will print an error to its log file and stop processing.
 
