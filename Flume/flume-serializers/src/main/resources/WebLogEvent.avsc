@@ -1,0 +1,21 @@
+{
+	"name" : "WebLogEvent",
+	"type" : "record",
+	"doc" : "Apache Web Server Log Events",
+	"fields" : [
+		{"name": "clientIp", "type" : "string"},
+		{"name": "clientId", "type" : [ "null","string"]},
+		{"name": "userId", "type" : ["null", "string"]},
+		{"name": "timeStamp", "type": "string"},
+		{"name": "requestType", "type": { "name" : "request",
+						"type": "enum", 
+						"symbols" : ["GET", "PUT"]}
+		},
+		{"name": "requestedPage", "type" : "string"},
+		{"name": "httpProtocol", "type": "string"},
+		{"name": "responseCode", "type" : "int"},
+		{"name": "responseSize", "type" : "int"},
+		{"name": "referrer", "type" : ["null", "string"]},
+		{"name": "userAgent", "type": ["null", "string"]}
+	]
+}
