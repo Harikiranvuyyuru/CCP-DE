@@ -1,0 +1,18 @@
+{
+	"namespace" : "com.example.flume.event",
+	"name" : "WebLogEvent",
+	"type": "record",
+	"fields" : [
+		{ "name" : "clientIp", "type" : "string" },
+		{ "name" : "clientId", "type" : ["null", "string"] },
+		{ "name" : "userId", "type" : ["null", "string"] },
+		{ "name" : "timeStamp", "type": "string" },
+		{ "name" : "requestType", "type" : { "name" : "Request", "type" : "enum", "symbols" : ["GET", "POST"] }},
+		{ "name" : "httpProtocol", "type" : "string" },
+		{ "name" : "requestPage", "type" : "string" },
+		{ "name" : "responseCode", "type" : "int" },
+		{ "name" : "responseSize" , "type" : "int" },
+		{ "name" : "referrer", "type" : ["null","string"] },
+		{ "name" : "userAgent" , "type" : ["null", "string"] }
+	]
+}
