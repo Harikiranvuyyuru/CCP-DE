@@ -102,4 +102,46 @@ The available types are:
     | hash       |  any object           |    int hash of the value, 0-B  | requires B, buckets integer attribute|
     --------------------------------------------------------------------------------------------------------------
 
-    
+Examples:
+
+1.
+
+```json
+    [ {
+      "source" : "EntryTime",
+      "type" : "year",
+      "name" : "year"
+    }, {
+      "source" : "EntryTime",
+      "type" : "month",
+      "name" : "month"
+    }, {
+      "source" : "EntryTime",
+      "type" : "day",
+      "name" : "day"
+    } ]
+```
+
+2.
+
+```json
+    [
+      {"type": "hash", "source": "email", "buckets": 16},
+      {"type": "identity", "source": "email"}
+    ]
+``` 
+
+3.
+
+```json
+    [
+       {
+          "type": "record", 
+          "name": "location",
+          "fields" : [
+             {"name": "latitude", "type": "long"},
+             {"name": "longitude", "type": "long"}
+          ]
+       }
+    ]
+```
