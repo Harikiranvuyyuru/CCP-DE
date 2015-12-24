@@ -88,12 +88,13 @@ which defines a field in the partition strategy. All field definitions require a
     type – the type of partition derived from the source data, such as “year”
 
 The available types are:
-    Type        |  Source               |    Produces  |  Requirements|
-    ------------|-----------------------|--------------|--------------|
-    year        |  a timestamp          |    year, like 2014  |  must be a long |
-    month       |  a timestamp          |    month, 1-12   |  must be a long |
-    day         |  a timestamp          |    day of the month, 1-31 |  must be a long |
-    hour        |  a timestamp          |    hour in the day, 0-23 |  must be a long |
-    minute      |  a timestamp          |    minute in the hour, 0-59 |  must be a long |
-    identity    |  any string or number |    the source value, unchanged   |  must be a string or numeric |
-    hash        |  any object  |    int hash of the value, 0-B | requires B, buckets integer attribute |
+
+    |Type        |  Source               |    Produces  |  Requirements|
+    |------------|-----------------------|--------------|--------------|
+    | year        |  a timestamp          |    year, like 2014  |  must be a long |
+    | month       |  a timestamp          |    month, 1-12   |  must be a long |
+    | day         |  a timestamp          |    day of the month, 1-31 |  must be a long |
+    | hour        |  a timestamp          |    hour in the day, 0-23 |  must be a long |
+    | minute      |  a timestamp          |    minute in the hour, 0-59 |  must be a long |
+    | identity    |  any string or number |    the source value, unchanged   |  must be a string or numeric |
+    | hash        |  any object  |    int hash of the value, 0-B | requires B, buckets integer attribute |
