@@ -20,23 +20,28 @@ public class MemPipelineExample extends Configured implements Tool {
 	
 	
 	public int run(String[] args) {
-		
+		//Create an in-memory PCollection<String>
 		PCollection<String> pc = MemPipeline.typedCollectionOf(Avros.strings(), "String", "", "String after empty");
-		PCollection<String> purged = pc.filter(new Purge());
+		//Filter pc which returns a new PCollection<String>
+		PCollection<String> purged = pc.filter(new PurgeEmpty());
+		//Some output
 		String str_before = pc.toString();
 		String str_after = purged.toString();
 		System.out.println(str_before);
 		System.out.println(str_after);
+
+		//Get an instance of MemPipeline
 		Pipeline mp = MemPipeline.getInstance();
+		//Kick off execution
 		PipelineResult mr = mp.done();
-		
+		//Return exit code
 		return mr.succeeded() ? 0: 1;
 	}
 	
+	//Custom implementation of FilterFn<String>
 	@SuppressWarnings("serial")
-	public static class Purge extends FilterFn<String> {
-		
-		
+	public static class PurgeEmpty extends FilterFn<String> {
+		//Accept items only if not empty.
 		public boolean accept(String word){
 			    return !(word.isEmpty());
 			}
