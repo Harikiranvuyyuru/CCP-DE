@@ -20,10 +20,8 @@ public class MemPipelineExample extends Configured implements Tool {
 	
 	
 	public int run(String[] args) {
-		//Get an instance of MemPipeline
-		Pipeline mp = MemPipeline.getInstance();
 		//Create an in-memory PCollection<String>
-		PCollection<String> pc = mp.typedCollectionOf(Avros.strings(), "String", "", "String after empty");
+		PCollection<String> pc = MemPipeline.typedCollectionOf(Avros.strings(), "String", "", "String after empty");
 		//Filter pc which returns a new PCollection<String>
 		PCollection<String> purged = pc.filter(new PurgeEmpty());
 		//Some output
@@ -31,6 +29,8 @@ public class MemPipelineExample extends Configured implements Tool {
 		String str_after = purged.toString();
 		System.out.println(str_before);
 		System.out.println(str_after);
+		//Get an instance of MemPipeline
+		Pipeline mp = MemPipeline.getInstance();
 		//Kick off execution
 		PipelineResult mr = mp.done();
 		//Return exit code
