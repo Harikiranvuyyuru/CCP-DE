@@ -25,11 +25,12 @@ public class WebLogAvroEventSerializer extends AbstractAvroEventSerializer<WebLo
 	private static final File schemaFile = new File("src/main/resources/weblog_event.avsc");
 	private final OutputStream out;
 	private final Schema schema;
-	private final String regex_log = "^(\\d+\\.\\d+\\.\\d+\\.\\d+)\\s(-|.*)\\s(-|.*)\\s\\[(.*)\\s\\-\\d{4}\\]\\s\"(\\w{3})\\s(.*)\\s(.*)\"\\s(\\d+)\\s(\\d+)\\s\"(-|.*)\"\\s\"(-|.*)$";
+	private final String regex_log;
 	
 	public WebLogAvroEventSerializer(OutputStream out) throws IOException {
 		this.out = out;
 		this.schema = new Schema.Parser().parse(schemaFile);
+		this.regex_log = "^(\\d+\\.\\d+\\.\\d+\\.\\d+)\\s(-|.*)\\s(-|.*)\\s\\[(.*)\\s\\-\\d{4}\\]\\s\"(\\w{3})\\s(.*)\\s(.*)\"\\s(\\d+)\\s(\\d+)\\s\"(-|.*)\"\\s\"(-|.*)$";
 	}
 
 	@Override
@@ -41,7 +42,10 @@ public class WebLogAvroEventSerializer extends AbstractAvroEventSerializer<WebLo
 	public Schema getSchema(){
 		return schema;
 	}
-
+	@Override
+	public String getRegexLog(){
+		return regex_log;
+	}
 	@Override
 	protected WebLogEvent convert(Event event){
 		WebLogEvent wle = new WebLogEvent();
