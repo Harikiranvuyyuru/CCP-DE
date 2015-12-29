@@ -47,7 +47,7 @@ public class AvroExamples extends Configured implements Tool {
 		//Filter out the succeessful requests
 		PCollection<WebEvent> succeeded = events.filter(new FilterFn<WebEvent>(){
 			public boolean accept(WebEvent event) {
-				return event.getResponseCode().equals(200L);
+				return event.getResponseCode().equals(200);
 			}
 		});
 		//Convert WebEvent to Pair<Page, ClientIP>
