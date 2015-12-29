@@ -40,7 +40,7 @@ public class SumArray extends GenericUDF {
 			return PrimitiveObjectInspectorFactory.javaFloatObjectInspector;
 		}
 		else {
-			throw new UDFArgumentException("List elements have to of numeric type");
+			throw new UDFArgumentException("List elements have to be of numeric type");
 		}
 	}
 	//Don't know the purpose of this.
