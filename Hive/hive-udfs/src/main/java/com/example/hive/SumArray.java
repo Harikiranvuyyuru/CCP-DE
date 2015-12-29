@@ -57,7 +57,7 @@ public class SumArray extends GenericUDF {
 			return null;
 		}
 		//Process Doubles
-		if (listio.getListElementObjectInspector() instanceof DoubleObjectInspector){
+		else if (listio.getListElementObjectInspector() instanceof DoubleObjectInspector){
 			Double sum = 0.0;
 			List<Double> doubles = (List<Double>) this.listio.getList(elements[0].get());
 			for(Double d: doubles){
@@ -66,7 +66,7 @@ public class SumArray extends GenericUDF {
 			return new Double(sum);
 		}
 		//Floats
-		if (listio.getListElementObjectInspector() instanceof FloatObjectInspector){
+		else if (listio.getListElementObjectInspector() instanceof FloatObjectInspector){
 			Float sum = 0.0f;
 			List<Float> floats = (List<Float>) this.listio.getList(elements[0].get());
 			
@@ -76,7 +76,7 @@ public class SumArray extends GenericUDF {
 			return new Float(sum);
 		}
 		//Integers
-		if (listio.getListElementObjectInspector() instanceof IntObjectInspector){
+		else if (listio.getListElementObjectInspector() instanceof IntObjectInspector){
 			Integer sum = 0;
 			List<Integer> ints = (List<Integer>) this.listio.getList(elements[0].get());
 			
@@ -87,7 +87,7 @@ public class SumArray extends GenericUDF {
 			return new Integer(sum);
 		}
 		//Longs
-		if (listio.getListElementObjectInspector() instanceof LongObjectInspector){
+		else if (listio.getListElementObjectInspector() instanceof LongObjectInspector){
 			Long sum = 0L;
 			List<Long> longs = (List<Long>) this.listio.getList(elements[0].get());
 			
