@@ -51,6 +51,10 @@ public class AvroExamples extends Configured implements Tool {
 			}
 		});
 		//Convert WebEvent to Pair<Page, ClientIP>
+		/*
+		 * Not the good example of processing. Just wanted to show how to work with pairs.
+		 *
+		 */
 		PCollection<Pair<String, String>> pageClient = succeeded.parallelDo(new PageClientExtractor(), Avros.pairs(Avros.strings(), Avros.strings()));
 		//Get the pages into a collection
 		PCollection<String> pages = pageClient.parallelDo(new DoFn<Pair<String, String>, String>(){
