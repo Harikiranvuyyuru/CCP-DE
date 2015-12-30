@@ -12,8 +12,7 @@ public class CurrentTime extends UDF {
 	Text _now = new Text();
 	public Text evaluate(){
 		
-		_now.set(DateFormatUtils.format(dt, "HH:mm:ss"));
+		return new Text(DateFormatUtils.format(dt, "HH:mm:ss"));
 		
-		return _now;
 	}
 }

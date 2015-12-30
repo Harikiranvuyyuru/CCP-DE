@@ -8,11 +8,10 @@ import org.apache.hadoop.io.Text;
 
 public class CurrentDate extends UDF {
 	private static Date dt = new Date();
-	Text _now = new Text();
+
 	public Text evaluate(){
+		//hive date format
+		return new Text(DateFormatUtils.format(dt, "yyyy-MM-dd"));
 		
-		_now.set(DateFormatUtils.format(dt, "MM/dd/yy"));
-		
-		return _now;
 	}
 }

@@ -9,12 +9,10 @@ import org.apache.hadoop.io.Text;
 public class Now extends UDF {
 
 	private static Date dt = new Date();
-	Text _now = new Text();
 	public Text evaluate(){
+		//Format have to standard hive timestamp format otherwise hive datetime function will now work.
+		return new Text(DateFormatUtils.format(dt, "yyyy-MM-dd HH:mm:ss"));
 		
-		_now.set(DateFormatUtils.format(dt, "MM/dd/yy HH:mm:ss"));
-		
-		return _now;
 	}
 }
 
