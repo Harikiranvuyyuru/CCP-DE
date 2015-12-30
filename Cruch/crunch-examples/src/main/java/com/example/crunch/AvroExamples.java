@@ -52,7 +52,7 @@ public class AvroExamples extends Configured implements Tool {
 		});
 		//Convert WebEvent to Pair<Page, ClientIP>
 		/*
-		 * Not the good example of processing. Just wanted to show how to work with pairs.
+		 * Not a good example of processing. Just wanted to show how to work with pairs.
 		 *
 		 */
 		PCollection<Pair<String, String>> pageClient = succeeded.parallelDo(new PageClientExtractor(), Avros.pairs(Avros.strings(), Avros.strings()));
