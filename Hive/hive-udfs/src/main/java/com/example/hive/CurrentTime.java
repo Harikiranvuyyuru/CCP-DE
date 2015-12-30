@@ -9,7 +9,6 @@ import org.apache.hadoop.io.Text;
 public class CurrentTime extends UDF {
 	
 	private static Date dt = new Date();
-	Text _now = new Text();
 	public Text evaluate(){
 		
 		return new Text(DateFormatUtils.format(dt, "HH:mm:ss"));
