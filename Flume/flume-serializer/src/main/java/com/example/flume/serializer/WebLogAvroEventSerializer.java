@@ -42,7 +42,7 @@ public class WebLogAvroEventSerializer extends AbstractAvroEventSerializer<WebLo
 	public Schema getSchema(){
 		return schema;
 	}
-	@Override
+
 	public String getRegexLog(){
 		return regex_log;
 	}
