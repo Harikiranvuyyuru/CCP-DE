@@ -23,7 +23,7 @@ public class WebLogAvroEventSerializer extends AbstractAvroEventSerializer<WebLo
 
 	private static final Logger logger = LoggerFactory.getLogger(WebLogAvroEventSerializer.class);
 	/*
-	*	Note: schemaFile have to be some in the local filesystem
+	*	Note: schemaFile have to be some in the local filesystem.
 	*/
 
 	private static final File schemaFile = new File("/usr/lib/flume-ng/resources/weblog_event.avsc");
