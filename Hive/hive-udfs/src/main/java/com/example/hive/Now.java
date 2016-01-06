@@ -10,7 +10,7 @@ public class Now extends UDF {
 
 	private static Date dt = new Date();
 	public Text evaluate(){
-		//Format have to standard hive timestamp format otherwise hive datetime function will now work.
+		//Format have to be standard hive timestamp format otherwise hive datetime function will not work.
 		return new Text(DateFormatUtils.format(dt, "yyyy-MM-dd HH:mm:ss"));
 		
 	}
