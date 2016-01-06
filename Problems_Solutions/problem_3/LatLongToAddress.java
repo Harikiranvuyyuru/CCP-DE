@@ -32,7 +32,7 @@ public class LatLongConverterToAddress {
 		LatLng location = new LatLng("37.521439","-121.99403");
 		/*
 		* GeocoderRequestBuilder Also has setAddress() method , if you
-		* want to convent Address to coordinates.
+		* want to convert Address to coordinates.
 		*/
 
 		GeocoderRequest geoRequest = new GeocoderRequestBuilder().setLocation(location).getGeocoderRequest();
