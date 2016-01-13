@@ -12,3 +12,5 @@ data = sc.parallelize([1, 2, 3, 4])
 total = data.reduce(lambda x, y: x + y)
 
 print total
+
+sc.stop()
