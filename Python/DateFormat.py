@@ -9,6 +9,7 @@ def main(s):
     try:
         #parse input date string
         dt = parser.parse(s)
+	# %D is short for %m/%d/%y
         return dt.strftime("%D")
     except ValueError:
         return s
