@@ -2,7 +2,7 @@
 
 from pyspark import SparkConf, SparkContext
 """
-	Usage: ./spark-submit SimpleApp.py
+	Usage: ./spark-submit simpleapp.py
 """
 conf = SparkConf().setMaster("local[2]").setAppName("Simple App")
 sc = SparkContext(conf=conf)
