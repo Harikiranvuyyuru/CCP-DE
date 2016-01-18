@@ -14,11 +14,19 @@ public class SimpleEmbeddedAgent {
 		Map<String, String> properties = new HashMap<String, String>();
 		//properties for Embedded Agent
 		properties.put("channel.type", "memory");
-		properties.put("channel.capacity", "100");
-		properties.put("sinks", "sink1");
+		properties.put("channel.capacity", "1000");
+		properties.put("source.interceptors", "inter1");
+		properties.put("source.interceptors.inter1.type", "host");
+		properties.put("source.interceptors.inter1.useIP", "false");
+		//Mandatory two sinks and processor type ; 'load_balance' or 'failover'
+		properties.put("processor.type", "load_balance"); 
+		properties.put("sinks", "sink1 sink2");
 		properties.put("sink1.type", "avro");
 		properties.put("sink1.hostname", "localhost");
 		properties.put("sink1.port", "41414");
+		properties.put("sink2.type", "avro");
+		properties.put("sink2.hostname", "localhost");
+		properties.put("sink2.port", "41415");
 
 		EmbeddedAgent ea = new EmbeddedAgent("SimpleEmbeddedAgent");
 
