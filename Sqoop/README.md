@@ -115,8 +115,11 @@
 ####Merge.
 ```shell
 	sqoop merge -\
-	-new-dir new_datadir \
-	--old-dir old_datadir \
-	--target output_dir \
-	import_program.jar import_class
+	   --class-name <name>     
+	   --jar-file <file>       
+	   --merge-key <column>
+  	   --new-data <path>
+	   --onto <path>
+	   --target-dir <path>
+
 ```
