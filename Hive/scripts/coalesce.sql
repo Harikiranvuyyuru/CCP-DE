@@ -1,4 +1,4 @@
---Usage: hive -f coalesce.sql --hivevar columns=col1 --hivevar coalesce=col2,col3,col4 --hivevar table=tbl
+--Usage: hive -f coalesce.sql --hivevar columns=user --hivevar coalesce=home,office,mobile --hivevar table=contacts
 
 --	----------------------------------------------------------------
 --	|  user 	| home 		| office 	| mobile 	|
