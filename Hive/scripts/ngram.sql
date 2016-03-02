@@ -1,7 +1,7 @@
 --Usage: hive -f ngram.sql --hivevar text=paragraph --hivevar ngram=2 --hivevar top=10 --hivevar table=text
 
 -- CREATE TABLE text (paragraph string)
---	ROW FORMAT DELIMITED FIELDS TERMINATED BY '\n'
+--	ROW FORMAT DELIMITED LINES TERMINATED BY '\n'
 --	STORED AS TEXTFILE;
 
 --	------------------------------------------------
