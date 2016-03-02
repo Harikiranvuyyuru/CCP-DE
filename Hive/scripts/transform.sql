@@ -18,7 +18,7 @@
 --	|10-06-1998 |
 --	-------------
 
-SELECT ${hivevar:fields}, TRANSFORM({hivevar:column})
+SELECT ${hivevar:fields}, TRANSFORM(${hivevar:column})
 USING 'python ${hivevar:pyfile}' FROM ${hivevar:table};
 
 --	------------
